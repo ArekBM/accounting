@@ -1,6 +1,8 @@
 package com.pluralsight;
 
-import java.sql.SQLOutput;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -58,6 +60,15 @@ public class LedgerApp {
                 saveTransaction(transaction);
                 System.out.println("Transaction saved successfully.");
 
+        }
+
+        private static void saveTransaction(Transaction transaction){
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
+                        writer.write(transaction.toCSV());
+                        writer.newLine();
+                } catch (IOException e) {
+                        System.out.println("Error saving transaction.");
+                }
         }
 
 }
