@@ -54,14 +54,23 @@ public class Transaction {
     public static Transaction fromCSV(String line) {
         String[] parts = line.split("\\|");
 
-        LocalDate date = localDate.parse(parts[0]);
-        LocalTime time = localTime.parse(parts[1]);
+        LocalDate date = LocalDate.parse(parts[0]);
+        LocalTime time = LocalTime.parse(parts[1]);
         String description = parts[2];
         String vendor = parts[3];
         double amount = Double.parseDouble(parts[4]);
 
         return new Transaction(date, time, description, vendor, amount);
-        //test
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s | %s | %-25s | %-15s | $%.2f",
+                date,
+                time.format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                description,
+                vendor,
+                amount);
     }
 }
 
