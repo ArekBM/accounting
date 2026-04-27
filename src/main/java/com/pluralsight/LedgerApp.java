@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -68,6 +69,18 @@ public class LedgerApp {
                         writer.newLine();
                 } catch (IOException e) {
                         System.out.println("Error saving transaction.");
+                }
+        }
+
+        private static void createFileIfMissing() {
+                File file = new File(FILE_NAME);
+
+                try {
+                        if (file.createNewFile()){
+                                System.out.println("Created transaction.csv file.");
+                        }
+                } catch (IOException e) {
+                        System.out.println("Could not create transaction.csv file.");
                 }
         }
 
