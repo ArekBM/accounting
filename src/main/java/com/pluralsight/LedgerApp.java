@@ -98,6 +98,9 @@ public class LedgerApp {
                                 case "3":
                                         displayTransactions(filterPayments());
                                         break;
+                                case "4":
+                                        showReportsScreen();
+                                        break;
                                 case "5":
                                         return;
                                 default:
@@ -124,26 +127,47 @@ public class LedgerApp {
                                 case "1":
                                         monthToDate();
                                         break;
-                                case "2":
-                                        previousMonth();
-                                        break;
-                                case "3":
-                                        yearToDate();
-                                        break;
-                                case "4":
-                                        previousYear();
-                                        break;
-                                case "5":
-                                        searchByVendor();
-                                        break;
-                                case "6":
-                                        customSearch();
-                                        break;
+//                                case "2":
+//                                        previousMonth();
+//                                        break;
+//                                case "3":
+//                                        yearToDate();
+//                                        break;
+//                                case "4":
+//                                        previousYear();
+//                                        break;
+//                                case "5":
+//                                        searchByVendor();
+//                                        break;
+//                                case "6":
+//                                        customSearch();
+//                                        break;
                                 case "7":
                                         return;
                                 default:
                                         System.out.println("Invalid option. Try again.");
                         }
+                }
+        }
+
+        private static void monthToDate(){
+                LocalDate today = LocalDate.now();
+                LocalDate startOfMonth = today.withDayOfMonth(1);
+                displayBetweenDates(startOfMonth, today);
+        }
+
+        private static void displayBetweenDates(LocalDate start, LocalDate end) {
+                ArrayList<Transaction> results = new ArrayList<>();
+
+                for (Transaction transaction : getAllTransactions()) {
+                        boolean isAfterStart = transaction.getDate().isEqual(start) || transaction.getDate().isAfter(start);
+                        boolean isBeforeEnd = transaction.getDate().isEqual(end) || transaction.getDate().isBefore(end);
+
+                        if (isAfterStart && isBeforeEnd){
+                                results.add(transaction);
+                        }
+
+                        displayTransactions(results);
                 }
         }
 
