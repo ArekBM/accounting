@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.sql.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -44,6 +45,8 @@ public class LedgerApp {
                         }
                 }
         }
+
+        // addTransaction expects one boolean which checks if we are adding money or subtracting
         private static void addTransaction(boolean isDeposit) {
                 System.out.println("Enter description: ");
                 String description = scanner.nextLine();
@@ -89,12 +92,40 @@ public class LedgerApp {
                                 case "1":
                                         displayTransactions(getAllTransactions());
                                         break;
+                                case "2":
+                                        displayTransactions(filterDeposits());
+                                        break;
+                                case "3":
+                                        displayTransactions(filterPayments());
+                                        break;
                                 case "5":
-                                        showHomeScreen();
+                                        return;
                                 default:
                                         System.out.println("Invalid option. Try again.");
                         }
                 }
+        }
+
+        private static ArrayList<Transaction> filterDeposits() {
+                ArrayList<Transaction> deposits = new ArrayList<>();
+
+                for (Transaction transaction : getAllTransactions()){
+                        if (transaction.isDeposit()){
+                                deposits.add(transaction);
+                        }
+                }
+                return deposits;
+        }
+
+        private static ArrayList<Transaction> filterPayments() {
+                ArrayList<Transaction> payments = new ArrayList<>();
+
+                for (Transaction transaction : getAllTransactions()){
+                        if(transaction.isPayment()){
+                                payments.add(transaction);
+                        }
+                }
+                return payments;
         }
 
         private static void displayTransactions(ArrayList<Transaction> transactions) {
