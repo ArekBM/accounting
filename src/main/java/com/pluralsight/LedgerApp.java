@@ -106,6 +106,47 @@ public class LedgerApp {
                 }
         }
 
+        private static void showReportsScreen() {
+                while (true) {
+                        System.out.println("\n=== Reports ===");
+                        System.out.println("1. Month To Date");
+                        System.out.println("2. Previous Month");
+                        System.out.println("3. Year To Date");
+                        System.out.println("4. Previous Year");
+                        System.out.println("5. Search By Vendor");
+                        System.out.println("6. Custom Search");
+                        System.out.println("7. Back");
+                        System.out.println("Choose an option: ");
+
+                        String choice = scanner.nextLine().trim();
+
+                        switch(choice) {
+                                case "1":
+                                        monthToDate();
+                                        break;
+                                case "2":
+                                        previousMonth();
+                                        break;
+                                case "3":
+                                        yearToDate();
+                                        break;
+                                case "4":
+                                        previousYear();
+                                        break;
+                                case "5":
+                                        searchByVendor();
+                                        break;
+                                case "6":
+                                        customSearch();
+                                        break;
+                                case "7":
+                                        return;
+                                default:
+                                        System.out.println("Invalid option. Try again.");
+                        }
+                }
+        }
+
         private static ArrayList<Transaction> filterDeposits() {
                 ArrayList<Transaction> deposits = new ArrayList<>();
 
