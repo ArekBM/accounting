@@ -127,9 +127,9 @@ public class LedgerApp {
                                 case "1":
                                         monthToDate();
                                         break;
-//                                case "2":
-//                                        previousMonth();
-//                                        break;
+                                case "2":
+                                        previousMonth();
+                                        break;
 //                                case "3":
 //                                        yearToDate();
 //                                        break;
@@ -150,10 +150,17 @@ public class LedgerApp {
                 }
         }
 
-        private static void monthToDate(){
+        private static void monthToDate() {
                 LocalDate today = LocalDate.now();
                 LocalDate startOfMonth = today.withDayOfMonth(1);
                 displayBetweenDates(startOfMonth, today);
+        }
+
+        private static void previousMonth() {
+                LocalDate today = LocalDate.now();
+                LocalDate firstDayPreviousMonth = today.minusMonths(1).withDayOfMonth(1);
+                LocalDate lastDayPreviousMonth = today.withDayOfMonth(1).minusDays(1);
+                displayBetweenDates(firstDayPreviousMonth, lastDayPreviousMonth);
         }
 
         private static void displayBetweenDates(LocalDate start, LocalDate end) {
