@@ -125,14 +125,14 @@ public class LedgerApp {
 
                         switch(choice) {
                                 case "1":
-                                        monthToDate();
+                                        retrieveCurrentMonth();
                                         break;
                                 case "2":
-                                        previousMonth();
+                                        retrievePreviousMonth();
                                         break;
-//                                case "3":
-//                                        yearToDate();
-//                                        break;
+                                case "3":
+                                        retrieveCurrentYear();
+                                        break;
 //                                case "4":
 //                                        previousYear();
 //                                        break;
@@ -150,17 +150,26 @@ public class LedgerApp {
                 }
         }
 
-        private static void monthToDate() {
+        private static void retrieveCurrentMonth() {
                 LocalDate today = LocalDate.now();
                 LocalDate startOfMonth = today.withDayOfMonth(1);
                 displayBetweenDates(startOfMonth, today);
         }
 
-        private static void previousMonth() {
+        private static void retrievePreviousMonth() {
                 LocalDate today = LocalDate.now();
+                //Gets first day of the last month
                 LocalDate firstDayPreviousMonth = today.minusMonths(1).withDayOfMonth(1);
+                //Gets last day of the last month
                 LocalDate lastDayPreviousMonth = today.withDayOfMonth(1).minusDays(1);
+                //Shows from 1-31 of last month
                 displayBetweenDates(firstDayPreviousMonth, lastDayPreviousMonth);
+        }
+
+        private static void retrieveCurrentYear() {
+                LocalDate today = LocalDate.now();
+                LocalDate startOfYear = today.withDayOfYear(1);
+                displayBetweenDates(startOfYear, today);
         }
 
         private static void displayBetweenDates(LocalDate start, LocalDate end) {
