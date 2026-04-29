@@ -18,10 +18,21 @@ public class LedgerApp {
 
         private static void showHomeScreen(){
                 while (true) {
-                        System.out.println("\n=== Accounting Ledger ===");
+                        System.out.println("  /$$$$$$            /$$                                 /$$     /$$             \n" +
+                                " /$$__  $$          |__/                                | $$    | $$             \n" +
+                                "| $$  \\__/  /$$$$$$  /$$ /$$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ /$$$$$$   /$$$$$$$\n" +
+                                "| $$ /$$$$ /$$__  $$| $$| $$__  $$ /$$__  $$ /$$__  $$|_  $$_/|_  $$_/  /$$_____/\n" +
+                                "| $$|_  $$| $$  \\__/| $$| $$  \\ $$| $$  \\ $$| $$  \\ $$  | $$    | $$   |  $$$$$$ \n" +
+                                "| $$  \\ $$| $$      | $$| $$  | $$| $$  | $$| $$  | $$  | $$ /$$| $$ /$$\\____  $$\n" +
+                                "|  $$$$$$/| $$      | $$| $$  | $$|  $$$$$$$|  $$$$$$/  |  $$$$/|  $$$$//$$$$$$$/\n" +
+                                " \\______/ |__/      |__/|__/  |__/ \\____  $$ \\______/    \\___/   \\___/ |_______/ \n" +
+                                "                                   /$$  \\ $$                                     \n" +
+                                "                                  |  $$$$$$/                                     \n" +
+                                "                                   \\______/                                      ");
+                        System.out.println("\n=== Gringotts Accounting System ===");
                         System.out.println("1. Deposit");
                         System.out.println("2. Make Payment");
-                        System.out.println("3. Transactions");
+                        System.out.println("3. Gold Tracker");
                         System.out.println("4. Exit");
                         System.out.println("Choose an option: ");
 
@@ -78,7 +89,7 @@ public class LedgerApp {
 
         private static void showLedgerScreen() {
                 while (true) {
-                        System.out.println("\n=== Ledger ===");
+                        System.out.println("\n=== Gold Tracker ===");
                         System.out.println("1. All Entries");
                         System.out.println("2. Deposits");
                         System.out.println("3. Payments");
