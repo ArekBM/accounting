@@ -133,9 +133,9 @@ public class LedgerApp {
                                 case "3":
                                         retrieveCurrentYear();
                                         break;
-//                                case "4":
-//                                        previousYear();
-//                                        break;
+                                case "4":
+                                        retrievePreviousYear();
+                                        break;
 //                                case "5":
 //                                        searchByVendor();
 //                                        break;
@@ -170,6 +170,13 @@ public class LedgerApp {
                 LocalDate today = LocalDate.now();
                 LocalDate startOfYear = today.withDayOfYear(1);
                 displayBetweenDates(startOfYear, today);
+        }
+
+        private static void retrievePreviousYear() {
+                LocalDate today = LocalDate.now();
+                LocalDate firstDayPreviousYear = today.minusYears(1).withDayOfYear(1);
+                LocalDate lastDayPreviousYear = today.withDayOfYear(1).minusDays(1);
+                displayBetweenDates(firstDayPreviousYear, lastDayPreviousYear);
         }
 
         private static void displayBetweenDates(LocalDate start, LocalDate end) {
