@@ -139,9 +139,9 @@ public class LedgerApp {
                                 case "5":
                                         searchByVendor();
                                         break;
-//                                case "6":
-//                                        customSearch();
-//                                        break;
+                                case "6":
+                                        customSearch();
+                                        break;
                                 case "7":
                                         return;
                                 default:
@@ -205,8 +205,8 @@ public class LedgerApp {
                                 results.add(transaction);
                         }
 
-                        displayTransactions(results);
                 }
+                displayTransactions(results);
         }
 
         private static ArrayList<Transaction> filterDeposits() {
@@ -283,6 +283,50 @@ public class LedgerApp {
                 } catch (IOException e) {
                         System.out.println("Could not create transaction.csv file.");
                 }
+        }
+
+        private static void customSearch() {
+                System.out.println("Start date yyyy-mm-dd, or leave blank: ");
+                String startDateInput = scanner.nextLine();
+
+                System.out.println("End date yyyy-mm-dd, or leave blank: ");
+                String endDateInput = scanner.nextLine();
+
+                System.out.println("Description, or leave blank: ");
+                String descriptionInput = scanner.nextLine();
+
+                System.out.println("Vendor, or leave blank: ");
+                String vendorInput = scanner.nextLine();
+
+                System.out.println("Amount, or leave blank: ");
+                String amountInput = scanner.nextLine();
+
+                ArrayList<Transaction> results = new ArrayList<>();
+
+                //Anything that doesnt match we skip
+                for (Transaction transaction : getAllTransactions()){
+                        if (!startDateInput.isEmpty() && transaction.getDate().isBefore(LocalDate.parse(startDateInput))){
+                                continue;
+                        }
+                        if (!startDateInput.isEmpty() && transaction.getDate().isAfter(LocalDate.parse(endDateInput))){
+                                continue;
+                        }
+                        if (!descriptionInput.isEmpty() && transaction.getDescription().toLowerCase().contains(vendorInput.toLowerCase())){
+                                continue;
+                        }
+                        if (!vendorInput.isEmpty() && transaction.getVendor().toLowerCase().contains(vendorInput.toLowerCase())){
+                                continue;
+                        }
+                        if (!amountInput.isEmpty() && transaction.getAmount() != Double.parseDouble(amountInput)){
+                                continue;
+                        }
+
+                        //Keep the matched results
+                        results.add(transaction);
+
+                }
+
+                displayTransactions(results);
         }
 
 }
