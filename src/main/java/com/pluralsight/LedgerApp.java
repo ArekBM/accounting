@@ -311,7 +311,7 @@ public class LedgerApp {
                         if (!startDateInput.isEmpty() && transaction.getDate().isAfter(LocalDate.parse(endDateInput))){
                                 continue;
                         }
-                        if (!descriptionInput.isEmpty() && transaction.getDescription().toLowerCase().contains(vendorInput.toLowerCase())){
+                        if (!descriptionInput.isEmpty() && !transaction.getDescription().toLowerCase().contains(descriptionInput.toLowerCase())){
                                 continue;
                         }
                         if (!vendorInput.isEmpty() && transaction.getVendor().toLowerCase().contains(vendorInput.toLowerCase())){
