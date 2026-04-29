@@ -136,9 +136,9 @@ public class LedgerApp {
                                 case "4":
                                         retrievePreviousYear();
                                         break;
-//                                case "5":
-//                                        searchByVendor();
-//                                        break;
+                                case "5":
+                                        searchByVendor();
+                                        break;
 //                                case "6":
 //                                        customSearch();
 //                                        break;
@@ -177,6 +177,21 @@ public class LedgerApp {
                 LocalDate firstDayPreviousYear = today.minusYears(1).withDayOfYear(1);
                 LocalDate lastDayPreviousYear = today.withDayOfYear(1).minusDays(1);
                 displayBetweenDates(firstDayPreviousYear, lastDayPreviousYear);
+        }
+
+        private static void searchByVendor() {
+                System.out.println("Enter vendor name: ");
+                String vendorSearch = scanner.nextLine().toLowerCase();
+
+                ArrayList<Transaction> results = new ArrayList<>();
+
+                for (Transaction transaction : getAllTransactions()) {
+                        if (transaction.getVendor().toLowerCase().contains(vendorSearch)) {
+                                ;
+                                results.add(transaction);
+                        }
+                }
+                displayTransactions(results);
         }
 
         private static void displayBetweenDates(LocalDate start, LocalDate end) {
