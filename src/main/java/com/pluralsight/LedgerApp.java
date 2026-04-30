@@ -317,9 +317,10 @@ public class LedgerApp {
                 //Anything that doesnt match we skip
                 for (Transaction transaction : getAllTransactions()){
                         if (!startDateInput.isEmpty() && transaction.getDate().isBefore(LocalDate.parse(startDateInput))){
+                                System.out.println("test");
                                 continue;
                         }
-                        if (!startDateInput.isEmpty() && transaction.getDate().isAfter(LocalDate.parse(endDateInput))){
+                        if (!endDateInput.isEmpty() && transaction.getDate().isAfter(LocalDate.parse(endDateInput))){
                                 continue;
                         }
                         if (!descriptionInput.isEmpty() && !transaction.getDescription().toLowerCase().contains(descriptionInput.toLowerCase())){
