@@ -108,15 +108,6 @@ accounting-master/
 
 ---
 
-### Option 2 (Maven)
-
-```bash
-mvn compile
-mvn exec:java -Dexec.mainClass="com.pluralsight.LedgerApp"
-```
-
----
-
 ## 💡 What I focused on
 
 Originally I had everything in one file, which got messy fast.
