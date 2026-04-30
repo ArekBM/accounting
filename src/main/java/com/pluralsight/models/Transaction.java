@@ -1,15 +1,14 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Transaction {
-    private LocalDate date;
-    private LocalTime time;
-    private String description;
-    private String vendor;
-    private double amount;
+    private final LocalDate date;
+    private final LocalTime time;
+    private final String description;
+    private final String vendor;
+    private final double amount;
 
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
@@ -48,7 +47,7 @@ public class Transaction {
     }
 
     public String toCSV() {
-        return date + "|" + time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "|" + description + "|" + vendor + "|" + amount;
+        return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
     }
 
     public static Transaction fromCSV(String line) {
@@ -65,12 +64,13 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return String.format("%s | %s | %-25s | %-15s | $%.2f",
+        return String.format(
+                "%-10s | %-8s | %-25s | %-15s | %.2f",
                 date,
-                time.format(DateTimeFormatter.ofPattern("HH:mm:ss")),
+                time.toString().substring(0, 8),
                 description,
                 vendor,
-                amount);
+                amount
+        );
     }
 }
-
