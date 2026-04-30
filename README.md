@@ -1,62 +1,82 @@
-🏦 Gringotts Accounting Ledger
+# 🏦 Gringotts Accounting Ledger
 
 This is a command-line Java app I built to track financial transactions. You can log deposits/payments, store them in a CSV file, and filter/search through them.
 
 This was my capstone project, so I focused on making it structured, readable, and actually usable — not just something that “works.”
 
-📌 What it does
-Add deposits (money in)
-Add payments (money out)
-Save everything to a CSV file
-View all transactions
-Filter deposits vs payments
-Run reports (monthly, yearly, etc.)
-Search by vendor or do a custom search
+---
+
+## 📌 What it does
+
+- Add deposits (money in)
+- Add payments (money out)
+- Save everything to a CSV file
+- View all transactions
+- Filter deposits vs payments
+- Run reports (monthly, yearly, etc.)
+- Search by vendor or do a custom search
 
 All data is stored in:
 
+```text
 transactions.csv
+```
 
 Each transaction looks like:
 
+```text
 date|time|description|vendor|amount
-🚀 Features
-Home Screen
-Add Deposit
-Make Payment
-View Ledger
-Exit
-Ledger
-View all entries
-Deposits only
-Payments only
-Reports
-Reports
-Month to date
-Previous month
-Year to date
-Previous year
-Search by vendor
-Custom search
-Custom Search
+```
 
+---
+
+## 🚀 Features
+
+### Home Screen
+- Add Deposit  
+- Make Payment  
+- View Ledger  
+- Exit  
+
+### Ledger
+- View all entries  
+- Deposits only  
+- Payments only  
+- Reports  
+
+### Reports
+- Month to date  
+- Previous month  
+- Year to date  
+- Previous year  
+- Search by vendor  
+- Custom search  
+
+### Custom Search
 You can filter by:
-
-Start date
-End date
-Description
-Vendor
-Amount
+- Start date  
+- End date  
+- Description  
+- Vendor  
+- Amount  
 
 If you leave a field blank, it just skips that filter.
 
-🛠️ Tech I used
-Java
-Maven (project structure + build)
-File I/O (BufferedReader / BufferedWriter)
-ArrayLists
-LocalDate / LocalTime
-📂 Project Structure
+---
+
+## 🛠️ Tech I used
+
+- Java  
+- Maven  
+- File I/O (BufferedReader / BufferedWriter)  
+- ArrayLists  
+- LocalDate / LocalTime  
+
+---
+
+## 📂 Project Structure
+
+```text
 accounting-master/
 │
 ├── src/main/java/com/pluralsight/
@@ -75,38 +95,61 @@ accounting-master/
 ├── transactions.csv
 ├── pom.xml
 └── README.md
-▶️ How to run it
-Option 1 (IntelliJ / IDE)
-Open the project
-Make sure transactions.csv is in the root
-Run:
-LedgerApp.java
+```
 
-💡 What I focused on
+---
 
-Originally I had everything in one file… which got messy fast.
+## ▶️ How to run it
 
-So I broke it down into layers:
+### Option 1 (IDE)
+1. Open the project  
+2. Make sure `transactions.csv` is in the root  
+3. Run `LedgerApp.java`
 
-ui/ → handles menus + user input
-services/ → handles logic (filtering, searching, reports)
-models/ → represents the data (Transaction)
-file manager → handles reading/writing CSV
+---
 
-This made debugging way easier and the code actually makes sense now when you read it.
+### Option 2 (Maven)
 
-🎯 What this project shows
-I can build a full CLI app end-to-end
-I understand file handling and persistence
-I can structure a project like a real application (not just one big class)
-I can implement filtering/search logic cleanly
-🔮 If I kept going
-Add input validation (right now it trusts the user a bit too much 😅)
-Sort transactions (newest first)
-Add categories or tags
-Turn it into a web app (React + backend)
-👍 Final thoughts
+```bash
+mvn compile
+mvn exec:java -Dexec.mainClass="com.pluralsight.LedgerApp"
+```
 
-This project helped me connect a lot of concepts together — especially structuring code properly instead of just getting something working.
+---
 
-It’s simple, but it feels like something real I could actually build on.
+## 💡 What I focused on
+
+Originally I had everything in one file, which got messy fast.
+
+So I broke it down into:
+
+- `ui/` → menus + user input  
+- `services/` → logic (filtering, searching)  
+- `models/` → data structure  
+- file manager → handles CSV  
+
+This made it way easier to debug and understand.
+
+---
+
+## 🎯 What this project shows
+
+- I can build a CLI app end-to-end  
+- I understand file handling and persistence  
+- I can structure a real project (not just one big class)  
+- I can implement filtering/search logic  
+
+---
+
+## 🔮 If I kept going
+
+- Add input validation  
+- Sort transactions (newest first)  
+- Add categories  
+- Turn it into a web app  
+
+---
+
+## 👍 Final thoughts
+
+This project helped me connect a lot of concepts together. It’s simple, but it feels like something real I could build on.
